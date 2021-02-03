@@ -1,0 +1,11 @@
+Hello hi. :q to quit and :w to save
+you press i to get to insert mode and esc to get to normal mode
+Fri 29 Jan 2021 07:57:51 PM EST
+I am now editing this in nano. ^X to exit.
+^K to cut text and ^U to past test. 
+Use arrow keys to move your cursor.
+Tue 02 Feb 2021 10:36:16 AM EST
+I am now editing this in emacs.emacs looks the most like a traditional text editor.
+To save you press ^X + ^S. To quit you press ^X ^C
+Wed 03 Feb 2021 03:31:05 PM EST
+This is the URL of my repository: https://github.com/20grobc/CIS241.git
