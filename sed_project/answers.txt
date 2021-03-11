@@ -1,0 +1,21 @@
+
+#1
+sed 's/color/colour/g;s/honor/honour/g;s/behavior/behaviour/g;s/humor/humour/g' /usr/share/dict/american-english
+
+#2
+sed -i -E  's/FOOPS/if/g' MyFile.c | sed -i -E  's/BEEPBOOP/\/\*\*/g' MyFile.c
+
+#3
+sed -E '/script/,/<\/script>/d' faculty
+
+#4
+sed -n '/#define\|#  define/p' /usr/include/limits.h > clean_limits.h
+
+#5
+sed -i.ORIG 's/gattaca/@@GREATMOVIE@@/g' dna.txt
+
+#6
+the scriptfile contains my answer to #6
+
+#7
+tail -50 /home/woodriir/241/lyrics | tac > ending_lyrics
