@@ -1,0 +1,484 @@
+#!/bin/bash
+# this is the pokemon awk file
+
+function avg(inSum){
+	return inSum/NR-1;
+}
+
+function formatAvg(sum1,sum2,sum3,sum4,sum5,sum6,sum7,total){
+	
+printf "N/A \t N/a \t N/A \t N/A\t %s\t \t %s   \t\t%s \t\t%s \t\t%s \t\t%s \t\t%s\n\n",int(sum1/total),int(sum2/total),int(sum3/total),int(sum4/total),int(sum5/total),int(sum6/total),int(sum7/total);
+}
+
+#function avg2(field){
+#	{ sum += $field }
+#	END{ avg = sum/NR-1;
+#	return avg; }
+#}
+
+#function best(type){
+#	BEGIN{ max =0; maxID = 0;}
+#	/type/{ if($5>max){ max = $5; maxID = $1}}
+#	END{ return maxID;}
+
+BEGIN{
+	FS=",";
+	max =0;
+	most_powerfulID = 0;
+	most_powerful_name = "";
+	headers = "# \t Name \t Type1 \t Type2 \t Total \t         HP\t\t Attack \t Defense \t SP Atk \t SP Def \t Speed;"
+}
+
+NR>1{   if($5>max){
+	  
+          max = $5;
+          most_powerfulID = $1;
+          most_powerful_name = $2;
+	}
+	sum1 += $5;
+	sum2 += $6;
+	sum3 += $7;
+	sum4 += $8;
+	sum5 += $9;
+	sum6 += $10
+	sum7 += $11;
+	overallCount += 1;
+}
+
+$2 ~/Grass/ || $3 ~/Grass/{
+	if($5>maxG){
+		maxG = $5;
+		mp_grass = $2;
+	}
+	sumG1 += $5;
+	sumG2 += $6;
+	sumG3 += $7;
+	sumG4 += $8;
+	sumG5 += $9;
+	sumG6 += $10;
+	sumG7 += $11;
+	grassCount += 1;
+}
+
+
+$2 ~/Fire/ || $3 ~/Fire/ {
+	if($5>maxF){
+		maxF = $5;
+		mp_fire = $2;
+	}
+	sumF1 += $5;
+	sumF2 += $6;
+	sumF3 += $7;
+	sumF4 += $8;
+	sumF5 += $9;
+	sumF6 += $10;
+	sumF7 += $11;
+	fireCount += 1;
+}
+
+$2 ~/Water/ || $3 ~/Water/{
+	if($5>maxW){
+		maxW = $5;
+		mp_water = $2;
+	}
+	sumW1 += $5;
+	sumW2 += $6;
+	sumW3 += $7;
+	sumW4 += $8;
+	sumW5 += $9;
+	sumW6 += $10;
+	sumW7 += $11;
+	waterCount += 1;
+}
+
+
+$2 ~/Normal/ || $3 ~/Normal/{
+	if($5>maxN){
+		maxN = $5;
+		mp_normal = $2;
+	}
+	sumN1 += $5;
+	sumN2 += $6;
+	sumN3 += $7;
+	sumN4 += $8;
+	sumN5 += $9;
+	sumN6 += $10;
+	sumN7 += $11;
+	normalCount += 1;
+}
+
+
+$2 ~/Bug/ || $3 ~/Bug/{
+	if($5>maxB){
+		maxB = $5;
+		mp_bug = $2;
+	}
+	sumB1 += $5;
+	sumB2 += $6;
+	sumB3 += $7;
+	sumB4 += $8;
+	sumB5 += $9;
+	sumB6 += $10;
+	sumB7 += $11;
+	bugCount += 1;
+}
+
+$2 ~/Poison/ || $3 ~/Poison/{
+	if($5>maxP){
+		maxP = $5;
+		mp_poison = $2;
+	}
+	sumP1 += $5;
+	sumP2 += $6;
+	sumP3 += $7;
+	sumP4 += $8;
+	sumP5 += $9;
+	sumP6 += $10;
+	sumP7 += $11;
+	poisonCount += 1;
+}
+
+$2 ~/Electric/ || $3 ~/Electric/{
+	if($5>maxE){
+		maxE = $5;
+		mp_electricity = $2;
+	}
+	sumE1 += $5;
+	sumE2 += $6;
+	sumE3 += $7;
+	sumE4 += $8;
+	sumE5 += $9;
+	sumE6 += $10;
+	sumE7 += $11;
+	electricCount += 1;
+}
+
+
+$2 ~/Ground/ || $3 ~/Ground/{
+	if($5>maxGr){
+		maxGr = $5;
+		mp_ground = $2;
+	}
+	sumGR1 += $5;
+	sumGR2 += $6;
+	sumGR3 += $7;
+	sumGR4 += $8;
+	sumGR5 += $9;
+	sumGR6 += $10;
+	sumGR7 += $11;
+	groundCount += 1;
+}
+
+
+$2 ~/Fairy/ || $3 ~/Fairy/{
+	if($5>maxFa){
+		maxFa = $5;
+		mp_fairy = $2;
+	}
+	sumFA1 += $5;
+	sumFA2 += $6;
+	sumFA3 += $7;
+	sumFA4 += $8;
+	sumFA5 += $9;
+	sumFA6 += $10;
+	sumFA7 += $11;
+	fairyCount += 1;
+}
+
+
+$2 ~/Fighting/ || $3 ~/Fighting/{
+	if($5>maxFi){
+		maxFi = $5;
+		mp_fighting = $2;
+	}
+	sumFI1 += $5;
+	sumFI2 += $6;
+	sumFI3 += $7;
+	sumFI4 += $8;
+	sumFI5 += $9;
+	sumFI6 += $10;
+	sumFI7 += $11;
+	fightingCount += 1;
+}
+
+
+$2 ~/Rock/ || $3 ~/Rock/{
+	if($5>maxRo){
+		maxRo = $5;
+		mp_rock = $2;
+	}
+	sumRO1 += $5;
+	sumRO2 += $6;
+	sumRO3 += $7;
+	sumRO4 += $8;
+	sumRO5 += $9;
+	sumRO6 += $10;
+	sumRO7 += $11;
+	rockCount += 1;
+}
+
+
+$2 ~/Psychic/ || $3 ~/Psychic/{
+	if($5>maxPs){
+		maxPS = $5;
+		mp_psychic = $2;
+	}
+	sumPS1 += $5;
+	sumPS2 += $6;
+	sumPS3 += $7;
+	sumPS4 += $8;
+	sumPS5 += $9;
+	sumPS6 += $10;
+	sumPS7 += $11;
+	psychicCount += 1;
+}
+
+
+/Steel/{
+	if($5>maxSt){
+		maxSt = $5;
+		mp_steel = $2;
+	}
+	sumST1 += $5;
+	sumST2 += $6;
+	sumST3 += $7;
+	sumST4 += $8;
+	sumST5 += $9;
+	sumST6 += $10;
+	sumST7 += $11;
+	steelCount += 1;
+}
+
+
+/Flying/{
+	if($5>maxFl){
+		maxFl = $5;
+		mp_flying = $2;
+	}
+	sumFL1 += $5;
+	sumFL2 += $6;
+	sumFL3 += $7;
+	sumFL4 += $8;
+	sumFL5 += $9;
+	sumFL6 += $10;
+	sumFL7 += $11;
+	flyingCount += 1;
+}
+
+
+$2 ~/Ice/ || $3 ~/Ice/{
+	if($5>maxIc){
+		maxIc = $5;
+		mp_ice = $2;
+	}
+	sumI1 += $5;
+	sumI2 += $6;
+	sumI3 += $7;
+	sumI4 += $8;
+	sumI5 += $9;
+	sumI6 += $10;
+	sumI7 += $11;
+	iceCount += 1;
+}
+
+
+/Ghost/{
+	if($5>maxGh){
+		maxGh = $5;
+		mp_ghost = $2;
+	}
+	sumGH1 += $5;
+	sumGH2 += $6;
+	sumGH3 += $7;
+	sumGH4 += $8;
+	sumGH5 += $9;
+	sumGH6 += $10;
+	sumGH7 += $11;
+	ghostCount += 1;
+}
+
+
+/Dragon/{
+	if($5>maxDr){
+		maxDr = $5;
+		mp_dragon = $2;
+	}
+	sumDR1 += $5;
+	sumDR2 += $6;
+	sumDR3 += $7;
+	sumDR4 += $8;
+	sumDR5 += $9;
+	sumDR6 += $10;
+	sumDR7 += $11;
+	dragonCount += 1;
+}
+
+
+$2 ~/Dark/ || $3 ~/Dark/{
+	if($5>maxDa){
+		maxDa = $5;
+		mp_dark = $2;
+	}
+	sumDA1 += $5;
+	sumDA2 += $6;
+	sumDA3 += $7;
+	sumDA4 += $8;
+	sumDA5 += $9;
+	sumDA6 += $10;
+	sumDA7 += $11;
+	darkCount += 1;
+}
+
+END{
+	avg1 = sum1/NR-1;
+	printf "\n\nThere are %s pokemon overall\n", overallCount;
+	printf "The most powerful pokemon is %s with total %s and ID %s\n\n",most_powerful_name, max, most_powerfulID;
+	print "The overall average of the following pokemon stats:";
+	print"# \t Name \t Type1 \t Type2 \t Total \t         HP \t\t Attack \t Defense \t SP Atk \t SP Def \t Speed";
+	printf "N/A \t N/a \t N/A \t N/A  \t%s \t %s \t %s \t %s \t %s \t %s \t %s\n\n", avg(sum1), avg(sum2), avg(sum3), avg(sum4), avg(sum5), avg(sum6), avg(sum7);
+	print"\n";
+	print"-----GRASS----------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", grassCount;
+	printf"Strongest Grass type is: %s\n\n", mp_grass;
+	print"The grass type averages:";
+	printf"%s\n", headers;
+	formatAvg(sumG1,sumG2,sumG3,sumG4,sumG5,sumG6,sumG7, grassCount);
+	print "-----FIRE----------------------------------------------------\n";
+
+	printf"There are %s pokemeons of this type\n", fireCount;
+	printf"Strongest Fire type is: %s\n\n", mp_fire;
+	printf"The fire type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumF1,sumF2,sumF3,sumF4,sumF5,sumF6,sumF7, fireCount);
+
+
+	print "-----WATER---------------------------------------------------\n";	
+	printf"There are %s pokemeons of this type\n", waterCount;
+	printf"Strongest Water type is: %s\n\n", mp_water;
+	printf"The water type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumW1,sumW2,sumW3,sumW4,sumW5,sumW6,sumW7, waterCount);
+
+	
+	print "-----BUG------------------------------------------------------\n";	
+	printf"There are %s pokemeons of this type\n", bugCount;
+	printf"Strongest Bug type is: %s\n\n", mp_bug;
+	printf"The bug type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumB1,sumB2,sumB3,sumB4,sumB5,sumB6,sumB7, bugCount);
+
+	
+	print "-----NORMAL----------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", normalCount;
+	printf"Strongest Normal type is: %s\n\n", mp_normal;
+	printf"The bug type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumN1,sumN2,sumN3,sumN4,sumN5,sumN6,sumN7, bugCount);
+
+	
+	print "-----POISON-----------------------------------------------------\n";	
+	printf"There are %s pokemeons of this type\n", poisonCount;
+	printf"Strongest Poison type is: %s\n\n", mp_poison;
+	printf"The poison type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumP1,sumP2,sumP3,sumP4,sumP5,sumP6,sumP7, bugCount);
+
+	
+	print "-----ELECTRIC----------------------------------------------------\n";	
+	printf"There are %s pokemeons of this type\n", electricCount;
+	printf"Strongest Electric type is: %s\n\n", mp_electricity;
+	printf"The electric type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumE1,sumE2,sumE3,sumE4,sumE5,sumE6,sumE7, electricCount);
+	
+	
+	print "-----GROUND-------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", groundCount;
+	printf"Strongest Ground type is: %s\n\n", mp_ground;
+	printf"The ground type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumGR1,sumGR2,sumGR3,sumGR4,sumGR5,sumGR6,sumG7, groundCount);
+
+	
+	print "-----FAIRY---------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", fairyCount;
+	printf"Strongest Fairy type is: %s\n\n", mp_fairy;
+	printf"The fairy type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumFA1,sumFA2,sumFA3,sumFA4,sumFA5,sumFA6,sumFA7, fairyCount);
+
+	
+	print "-----FIGHTING--------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", fightingCount;
+	printf"Strongest Fighting type is: %s\n\n", mp_fighting;
+	printf"The fighting type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumFI1,sumFI2,sumFI3,sumFI4,sumFI5,sumFI6,sumFI7, fightingCount);
+
+	
+	print "-----ROCK------------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", rockCount;
+	printf"Strongest Rock type is: %s\n\n", mp_rock;
+	printf"The rock type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumRO1,sumRO2,sumRO3,sumRO4,sumRO5,sumRO6,sumRO7, rockCount);
+
+	
+	print "-----PSYCHIC----------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", psychicCount;
+	printf"Strongest Psychic type is: %s\n\n", mp_psychic;
+	printf"The psychic type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumPS1,sumPS2,sumPS3,sumPS4,sumPS5,sumPS6,sumPS7, psychicCount);
+
+
+	print "-----STEEL-------------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", steelCount;
+	printf"Strongest Steel type is: %s\n\n", mp_steel;
+	printf"The steel type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumST1,sumST2,sumST3,sumST4,sumST5,sumST6,sumST7, steelCount);
+
+
+	print "-----FLYING-------------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", flyingCount;
+	printf"Strongest Flying type is: %s\n\n", mp_flying;
+	printf"The flying type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumFL1,sumFL2,sumFL3,sumFL4,sumFL5,sumFL6,sumFL7, flyingCount);
+
+	
+	print "-----ICE-----------------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", iceCount;
+	printf"Strongest Ice type is: %s\n\n", mp_ice;
+	printf"The Ice type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumI1,sumI2,sumI3,sumI4,sumI5,sumI6,sumI7, iceCount);
+
+	
+	print "-----GHOST---------------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", ghostCount;
+	printf"Strongest Ghost type is: %s\n\n", mp_ghost;
+	printf"The ghost type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumGH1,sumGH2,sumGH3,sumGH4,sumGH5,sumGH6,sumGH7, ghostCount);
+
+
+	print "-----DRAGON---------------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", dragonCount;
+	printf"Strongest Dragon type is: %s\n\n", mp_dragon;
+	printf"The dragon type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumDR1,sumDR2,sumDR3,sumDR4,sumDR5,sumDR6,sumDR7, dragonCount);
+
+
+	print "-----DARK------------------------------------------------------------------\n";
+	printf"There are %s pokemeons of this type\n", darkCount;
+	printf"Strongest Dark type is: %s\n\n", mp_dark;
+	printf"The dark type averages:\n";
+	printf"%s\n", headers;
+	formatAvg(sumDA1,sumDA2,sumDA3,sumDA4,sumDA5,sumDA6,sumDA7,darkCount);
+
+	
+}
+
