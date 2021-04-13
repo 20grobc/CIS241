@@ -10,16 +10,24 @@ function formatAvg(sum1,sum2,sum3,sum4,sum5,sum6,sum7,total){
 printf "N/A \t N/a \t N/A \t N/A\t %s\t \t %s   \t\t%s \t\t%s \t\t%s \t\t%s \t\t%s\n\n",int(sum1/total),int(sum2/total),int(sum3/total),int(sum4/total),int(sum5/total),int(sum6/total),int(sum7/total);
 }
 
-#function avg2(field){
-#	{ sum += $field }
-#	END{ avg = sum/NR-1;
-#	return avg; }
-#}
+function findMax(counts){
+	max = counts[0];
+	maxIndex =0;
 
-#function best(type){
-#	BEGIN{ max =0; maxID = 0;}
-#	/type/{ if($5>max){ max = $5; maxID = $1}}
-#	END{ return maxID;}
+	
+	types[1] = "grass"; types[2] = "fire"; types[3] = "water"; types[4] = "bug"; types[5] = "normal"; types[6] = "poison";
+	types[7] = "electric"; types[8] = "ground"; types[9] = "dragon"; types[10] = "fairy"; types[11] = "fighting"; types[12]="ice";
+	types[13] = "rock"; types[14] = "psychic"; types[15] = "steel"; types[16] = "flying"; types[17] = "ghost"; types[18] = "dark"; 
+
+	for(i=1; i<18; i++){
+		if(counts[i]>max){
+			max = counts[i];
+			maxIndex = i;
+		}
+	}
+
+	return types[maxIndex]; 
+}
 
 BEGIN{
 	FS=",";
@@ -479,6 +487,11 @@ END{
 	printf"%s\n", headers;
 	formatAvg(sumDA1,sumDA2,sumDA3,sumDA4,sumDA5,sumDA6,sumDA7,darkCount);
 
-	
+	print"-----------------------------------------------------------------------------\n";
+	counts[1] = grassCount; counts[2] = fireCount; counts[3] = waterCount; counts[4] = bugCount; counts[5] = normalCount; counts[6] = poisonCount;
+	counts[7] = electricCount; counts[8] = groundCount; counts[9] = dragonCount; counts[10] = fiaryCount; counts[11] = fightingCount; counts[12]=iceCount;
+	counts[13] = rockCount; counts[14] = psychicCount; counts[15] = steelCount; counts[16] = flyingCount; counts[17] = ghostCount; counts[18] = darkCount; 
+	mc_type = findMax(counts);
+        printf"The type with the most pokemon is %s\n\n",mc_type;	
 }
 
